@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+<h:body>
+    <ui:composition template="/main.xhtml">
+        <ui:define name="content">
+
+
+            <h:form id="form" class="form-horizontal">
+                <center>
+                    <h2>
+                        <h:outputText  value= "#{UsersDao.getTittle()}"/>
+                    </h2>
+                </center>
+                <h:panelGrid id="panel" columns="2" cellpadding="10" cellspacing="1">
+
+                    <h:commandButton action="#{UsersDao.goBackward()}" value="Go Back" class="btn btn-danger">
+                    </h:commandButton>
+
+                </h:panelGrid>
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <h:outputLabel for="username" class="control-label col-sm-2">Full Name</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="name-id" value="#{user.name}" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="email" class="control-label col-sm-2">Your Email</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="email-id" value="#{user.email}" class="form-control" />
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <h:outputLabel for="gender" class="control-label col-sm-2">Gender</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:selectOneRadio value="#{user.gender}">
+                            <f:selectItem itemValue="M" itemLabel="Male" />
+                            <f:selectItem itemValue="F" itemLabel="Female" />
+                        </h:selectOneRadio>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">Address</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputTextarea value="#{user.address}" cols="50" rows="5" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">User Name</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText value="#{user.userName}" class="form-control" />
+                    </div>
+                </div>
+ <div class="form-group">
+                    <h:outputLabel for="password" class="control-label col-sm-2">Password</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputSecret id="password-id" value="#{user.passwrd}" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <center>
+                            <h:commandButton value= "#{UsersDao.getButtonText()}" action="#{UsersDao.save(user)}" class="btn btn-primary"
+                                style="width: 80px;"></h:commandButton>
+                        </center>
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>

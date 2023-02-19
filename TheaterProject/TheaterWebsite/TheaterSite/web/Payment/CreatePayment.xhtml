@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://xmlns.jcp.org/jsf/passthrough">><script type="text/javascript">
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+    }
+    //]]>
+</script><h:body>
+    <ui:composition template="/main.xhtml">
+        <ui:define name="content">   <h:form id="form" class="form-horizontal">
+                <center>
+                    <h2>
+                        <h:outputText  value= "#{DAOPayment.getTittle()}"/>
+                    </h2>
+                </center>
+                <h:panelGrid id="panel" columns="2" cellpadding="10" cellspacing="1">
+
+                    <h:commandButton action="#{DAOPayment.goBackward()}" value="Go Back" class="btn btn-danger">
+                    </h:commandButton>
+
+                </h:panelGrid>  <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">Customer Id</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText value="#{Payment.customerId}"  class="form-control" />
+                    </div>
+                </div>  <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">Customer Name</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText value="#{Payment.customerName}"  class="form-control" />
+                    </div>
+                </div>  <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">Reservation Number</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText value="#{Payment.reservationNumber}"  class="form-control" />
+                    </div>
+                </div>  <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-2">Total Amount</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText value="#{Payment.totalAmount}"  class="form-control" />
+                    </div>
+                </div><div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <center>
+                            <h:commandButton value= "#{DAOPayment.getButtonText()}" action="#{DAOPayment.save(Payment)}" class="btn btn-primary"
+                                style="width: 80px;"></h:commandButton>
+                        </center>
+                    </div>
+                </div>
+
+            </h:form>       </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>
